@@ -1,0 +1,38 @@
+{
+  "name": "bototbot",
+  "version": "1.0.0",
+  "description": "A node.js powered bot, written using telegraf.js library that controls the other bots.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaboomdev/bot_ot_bot.git"
+  },
+  "author": "Umarbekov K.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaboomdev/bot_ot_bot/issues"
+  },
+  "homepage": "https://github.com/kaboomdev/bot_ot_bot#readme",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "forever": "^1.0.0",
+    "log-timestamp": "^0.3.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.14",
+    "request": "^2.88.0",
+    "telegraf": "^3.29.0",
+    "telegraf-i18n": "^6.6.0"
+  },
+  "keywords": [
+    "Node.js",
+    "Telegraf.js",
+    "Express",
+    "Mongoose"
+  ]
+}
