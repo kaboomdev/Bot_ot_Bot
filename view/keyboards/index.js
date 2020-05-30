@@ -16,7 +16,6 @@ module.exports = {
         return Markup.keyboard([
             [ctx.i18n.t("keyboards.main.ad"), ctx.i18n.t("keyboards.main.status")],
             [ctx.i18n.t("keyboards.main.ban"), ctx.i18n.t("keyboards.main.stats")],
-            [ctx.i18n.t("shared.back")],
             [ctx.i18n.t("shared.main")]
         ]).oneTime().resize().extra();
     },
@@ -24,7 +23,7 @@ module.exports = {
         return Markup.keyboard([
             [ctx.i18n.t("keyboards.ad.mail")],
             [ctx.i18n.t("keyboards.ad.promo")],
-            [ctx.i18n.t("shared.main")],
+            [ctx.i18n.t("shared.back")],
         ]).oneTime().resize().extra();
     },
     stateKeyboard: (ctx, isAlive) => {

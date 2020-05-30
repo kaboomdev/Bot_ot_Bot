@@ -24,28 +24,19 @@ adMailing.hears(match("shared.main"), async (ctx) => {
 });
 
 adMailing.hears(match("shared.yes"), async (ctx) => {
-    if (ctx.session.SAVED_MSG && ctx.session.MAIL_PHOTO !== "waiting") {;
+    console.log(ctx.session);
+  
+    if(ctx.session.MAIL_PHOTO && ctx.session.MAIL_PHOTO !== "waiting") {
+
         await ctx.replyWithHTML(ctx.i18n.t("ad.mailing.sending"));
-
+        
         try {
-            const response = await axios.post('http://kaboomdev-sam-oshbot.glitch.me/ad', {
-                message: ctx.session.SAVED_MSG,
-            });
-            console.log(response.data);
-
-            ctx.session.SAVED_MSG = "";
-        } catch (error) {
-            console.error(error);
-        }
-    } else if (ctx.session.MAIL_PHOTO && ctx.session.MAIL_PHOTO === "waiting") {
-        await ctx.replyWithHTML("ad.mailing.sendUrl");
-        try {
-            const response = await axios.post('http://kaboomdev-sam-oshbot.glitch.me/ad', {
+            const response = await axios.post('http://84.54.114.220:3000/ad', {
                 message: ctx.session.SAVED_MSG,
                 photo: ctx.session.MAIL_PHOTO,
             });
             console.log(response.data);
-
+        
             ctx.session.SAVED_MSG = "";
             ctx.session.MAIL_PHOTO = "";
         } catch (error) {
@@ -53,7 +44,20 @@ adMailing.hears(match("shared.yes"), async (ctx) => {
         }
         
         
-    }
+    } else {
+        await ctx.replyWithHTML(ctx.i18n.t("ad.mailing.sending"));
+
+        try {
+            const response = await axios.post('http://84.54.114.220:3000/ad', {
+                message: ctx.session.SAVED_MSG,
+            });
+            console.log(response.data);
+
+            ctx.session.SAVED_MSG = "";
+        } catch (error) {
+            console.error(error);
+        }
+    } 
 });
 
 adMailing.on("photo", async (ctx) => {

@@ -39,7 +39,12 @@ bot.hears(settings.available_bots, async (ctx) => {
 
 
 bot.hears(match("shared.back"), (ctx)=>{
-  ctx.scene.enter(ctx.session.ACTIVE_BOT);
+  if(ctx.session.ACTIVE_BOT) {
+    ctx.scene.enter(ctx.session.ACTIVE_BOT);
+  } else {
+    responses.initial(ctx);
+  }
+
 });
 
 bot.hears(match("shared.main"),(ctx)=>{
@@ -68,6 +73,7 @@ bot.on('photo', (ctx)=>{
 })
 
 
+bot.on("message", responses.initial);
 
 // bot.on('photo', async (ctx) => {
 //   const photo = ctx.message.photo;

@@ -5,6 +5,7 @@ const Scene = require('telegraf/scenes/base');
 const {  
     Order, 
     Transaction,
+    User,
 } = require("./database/models");
 
 //Keyboards
@@ -32,12 +33,15 @@ sam_osh.enter(async (ctx) => {
     
     const orders = await Order.find({});
     const transactions = await Transaction.find({});
+    const users = await User.find({});
     
     
     if (orders.length && transactions.length) {
         const stats = {
-            "Заказов": orders.length,
+            "Корзин": orders.filter(el=>el.status === "New").length,
+            "Заказов": orders.filter(el => {return (el.status === "Approved" || el.status === "Complete")}).length,
             "Транзакции": transactions.length,
+            "Пользователей" : users.length,
         }
         const statsString = responses.statsBuilder(stats);
         
