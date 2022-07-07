@@ -23,7 +23,7 @@
     "express": "^4.16.4",
     "forever": "^1.0.0",
     "log-timestamp": "^0.3.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.5.14",
     "request": "^2.88.0",
     "telegraf": "^3.29.0",
